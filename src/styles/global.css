@@ -1,0 +1,11 @@
+/* Print-specific overrides */
+@media print {
+  .print-quality {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+}

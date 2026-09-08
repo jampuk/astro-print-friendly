@@ -1,0 +1,52 @@
+steps:
+  # Build production target (nginx serving Astro dist/) and tag with SHORT_SHA + latest
+  - id: build
+    name: gcr.io/cloud-builders/docker
+    args:
+      - build
+      - '--target=production'
+      - '--build-arg=PUBLIC_PAPER_SIZE=$_PAPER_SIZE'
+      - '--build-arg=PUBLIC_PAPER_ORIENTATION=$_PAPER_ORIENTATION'
+      - '-t'
+      - '$_REGION-docker.pkg.dev/$PROJECT_ID/$_REPOSITORY/$_SERVICE:$SHORT_SHA'
+      - '-t'
+      - '$_REGION-docker.pkg.dev/$PROJECT_ID/$_REPOSITORY/$_SERVICE:latest'
+      - .
+
+  # Push both tags to Artifact Registry (must complete before deploy)
+  - id: push
+    name: gcr.io/cloud-builders/docker
+    args:
+      - push
+      - --all-tags
+      - '$_REGION-docker.pkg.dev/$PROJECT_ID/$_REPOSITORY/$_SERVICE'
+    waitFor:
+      - build
+
+  # Deploy to Cloud Run (nginx listens on 80)
+  - id: deploy
+    name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    entrypoint: gcloud
+    args:
+      - run
+      - deploy
+      - '$_SERVICE'
+      - '--image=$_REGION-docker.pkg.dev/$PROJECT_ID/$_REPOSITORY/$_SERVICE:$SHORT_SHA'
+      - '--region=$_REGION'
+      - '--platform=managed'
+      - '--port=80'
+      - '--allow-unauthenticated'
+    waitFor:
+      - push
+
+substitutions:
+  _REGION: europe-west1
+  _REPOSITORY: apps
+  _SERVICE: astro-print-friendly
+  _PAPER_SIZE: ''
+  _PAPER_ORIENTATION: ''
+
+options:
+  logging: CLOUD_LOGGING_ONLY
+
+timeout: 1200s

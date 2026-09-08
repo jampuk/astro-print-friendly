@@ -1,0 +1,28 @@
+---
+interface Props {
+  pageNumber?: number;
+  totalPages?: number;
+  showPageNumber?: boolean;
+  companyName?: string;
+}
+
+const { pageNumber, totalPages = 4, showPageNumber = true, companyName = "Your Company" } = Astro.props;
+---
+
+  <div style="border-top: 1px solid #E2E8F0; padding-top: 5mm;">
+  <div class="flex items-center justify-between">
+    <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 8pt; color: #0B132B;">
+      {companyName}
+    </span>
+    <div class="flex items-center" style="gap: 4mm;">
+      <span style="font-family: 'Inter', sans-serif; font-size: 7pt; color: #64748B;">
+        &copy; {new Date().getFullYear()} {companyName}. All rights reserved.
+      </span>
+      {showPageNumber && pageNumber && (
+        <span style="font-family: 'Fira Code', monospace; font-size: 6pt; color: #64748B;">
+          {pageNumber} / {totalPages}
+        </span>
+      )}
+    </div>
+  </div>
+</div>

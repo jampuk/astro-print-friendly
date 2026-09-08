@@ -1,0 +1,48 @@
+# ── Dependencies / build output (rebuilt inside image) ─────────────────────────
+node_modules/
+dist/
+.astro/
+
+# ── Version control ───────────────────────────────────────────────────────────
+.git/
+.gitignore
+.gitattributes
+
+# ── Environment / Secrets (never bake into images) ────────────────────────────
+.env
+.env.*
+*.pem
+*.key
+service-account*.json
+*-credentials.json
+
+# ── IDE / editor files ────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# ── Docker-related (no need to send compose file into build context) ──────────
+docker-compose.yml
+docker-compose.override.yml
+
+# ── CI/CD ─────────────────────────────────────────────────────────────────────
+cloudbuild.yaml
+.github/
+
+# ── Documentation (not needed at runtime) ────────────────────────────────────
+README.md
+AGENTS.md
+agents.md
+
+# ── Logs and local audio artefacts ───────────────────────────────────────────
+*.log
+logs/
+
+# Archives
+*.zip
+*.tar.gz
+*.tgz

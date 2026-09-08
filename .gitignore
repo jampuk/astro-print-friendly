@@ -1,0 +1,39 @@
+# Environment & secrets
+.env
+.env.*
+!.env.example
+
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+.astro/
+
+# Archives
+*.zip
+*.tar.gz
+*.tgz
+
+# IDEs & editors 
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Docker
+# Local overrides for compose (never commit secrets)
+docker-compose.override.yml
+
+# Logs
+*.log
+logs/
+
+# Misc 
+*.bak
+*.tmp
+agents.md
+AGENTS.md

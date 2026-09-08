@@ -1,0 +1,100 @@
+---
+import PageSection from "../components/PageSection.astro";
+import PrintFooter from "../components/PrintFooter.astro";
+
+interface Props {
+  companyName?: string;
+}
+
+const { companyName = "Your Company" } = Astro.props;
+---
+
+<PageSection>
+  <div class="absolute inset-0 flex flex-col justify-between" style="padding: 20mm;">
+    <div>
+      <div style="margin-bottom: 5mm;">
+        <span style="font-family: 'Space Grotesk', sans-serif; font-size: 6pt; font-weight: 600; color: #0EA5E9; letter-spacing: 0.1em; text-transform: uppercase;">Page 02 - Introduction</span>
+        <h2 style="font-family: 'Bricolage Grotesque', 'Space Grotesk', sans-serif; font-weight: 700; font-size: 22pt; color: #0B132B; letter-spacing: -0.02em; margin-top: 2mm;">About Us</h2>
+        <p style="font-family: 'Inter', sans-serif; font-size: 9pt; line-height: 1.6; color: #475569; margin-top: 2mm; max-width: min(150mm, 90%);">
+          Replace this with your company overview. Describe what you do, your mission, and what makes you unique. Keep it concise and compelling for print readers.
+        </p>
+      </div>
+
+      <!-- Three Pillars -->
+      <div class="flex" style="gap: 3mm; margin-bottom: 5mm;">
+        <div class="rounded-md" style="flex: 1; padding: 3mm 3.5mm; border: 1px solid #E2E8F0; background: #FFFFFF;">
+          <div style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 7.5pt; color: #0B132B; margin-bottom: 1.5mm;">Pillar One</div>
+          <p style="font-family: 'Inter', sans-serif; font-size: 6.5pt; line-height: 1.55; color: #475569;">
+            Describe your first key value proposition or service area here. Keep it brief and focused.
+          </p>
+        </div>
+        <div class="rounded-md" style="flex: 1; padding: 3mm 3.5mm; border: 1px solid #E2E8F0; background: #FFFFFF;">
+          <div style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 7.5pt; color: #0B132B; margin-bottom: 1.5mm;">Pillar Two</div>
+          <p style="font-family: 'Inter', sans-serif; font-size: 6.5pt; line-height: 1.55; color: #475569;">
+            Describe your second key value proposition or service area here. Keep it brief and focused.
+          </p>
+        </div>
+        <div class="rounded-md" style="flex: 1; padding: 3mm 3.5mm; border: 1px solid #E2E8F0; background: #FFFFFF;">
+          <div style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 7.5pt; color: #0B132B; margin-bottom: 1.5mm;">Pillar Three</div>
+          <p style="font-family: 'Inter', sans-serif; font-size: 6.5pt; line-height: 1.55; color: #475569;">
+            Describe your third key value proposition or service area here. Keep it brief and focused.
+          </p>
+        </div>
+      </div>
+
+      <!-- Key Highlights -->
+      <div class="rounded-md" style="padding: 3.5mm 4mm; border: 1px solid #E2E8F0; background: #FFFFFF; margin-bottom: 4mm;">
+        <div style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 6.5pt; color: #0EA5E9; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 2mm;">Key Highlights</div>
+        <div class="flex" style="gap: 4mm;">
+          <div style="flex: 1;">
+            <p style="font-family: 'Inter', sans-serif; font-size: 7pt; line-height: 1.6; color: #475569; margin-bottom: 2mm;">
+              Add a quote, key statistic, or compelling statement here. This section draws attention to your most important message.
+            </p>
+          </div>
+          <div style="flex: 1;">
+            <div style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 7pt; color: #0B132B; margin-bottom: 2mm; text-transform: uppercase; letter-spacing: 0.06em;">Quick Facts</div>
+            <div class="flex" style="gap: 2mm;">
+              <div class="rounded-md" style="flex: 1; padding: 2mm; border: 1px solid #E2E8F0; background: #F5F7FA;">
+                <div style="font-family: 'Fira Code', monospace; font-size: 10pt; font-weight: 700; color: #0EA5E9;">XX</div>
+                <div style="font-family: 'Inter', sans-serif; font-size: 5.5pt; color: #64748B;">Years Experience</div>
+              </div>
+              <div class="rounded-md" style="flex: 1; padding: 2mm; border: 1px solid #E2E8F0; background: #F5F7FA;">
+                <div style="font-family: 'Fira Code', monospace; font-size: 10pt; font-weight: 700; color: #0EA5E9;">XX</div>
+                <div style="font-family: 'Inter', sans-serif; font-size: 5.5pt; color: #64748B;">Projects Delivered</div>
+              </div>
+              <div class="rounded-md" style="flex: 1; padding: 2mm; border: 1px solid #E2E8F0; background: #F5F7FA;">
+                <div style="font-family: 'Fira Code', monospace; font-size: 10pt; font-weight: 700; color: #0EA5E9;">XX%</div>
+                <div style="font-family: 'Inter', sans-serif; font-size: 5.5pt; color: #64748B;">Client Retention</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Additional Content Blocks -->
+      <div class="flex" style="gap: 3mm;">
+        <div class="rounded-md" style="flex: 1; padding: 3mm 3.5mm; border: 1px solid #E2E8F0; background: #FFFFFF;">
+          <div style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 7.5pt; color: #0B132B; margin-bottom: 1.5mm;">Our Approach</div>
+          <p style="font-family: 'Inter', sans-serif; font-size: 6.5pt; line-height: 1.55; color: #475569;">
+            Describe your methodology, process, or unique approach here. What sets you apart from competitors?
+          </p>
+        </div>
+        <div class="rounded-md" style="flex: 1; padding: 3mm 3.5mm; border: 1px solid #E2E8F0; background: #FFFFFF;">
+          <div style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 7.5pt; color: #0B132B; margin-bottom: 1.5mm;">Our Values</div>
+          <div style="font-family: 'Inter', sans-serif; font-size: 6.5pt; line-height: 1.55; color: #475569;">
+            <div style="margin-bottom: 1.5mm;"><span style="font-weight: 600; color: #0B132B;">Quality: </span>Describe your commitment to quality.</div>
+            <div><span style="font-weight: 600; color: #0B132B;">Innovation: </span>Describe how you stay ahead.</div>
+          </div>
+        </div>
+        <div class="rounded-md" style="flex: 1; padding: 3mm 3.5mm; border: 1px solid #E2E8F0; background: #FFFFFF;">
+          <div style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 7.5pt; color: #0B132B; margin-bottom: 1.5mm;">Why Choose Us</div>
+          <p style="font-family: 'Inter', sans-serif; font-size: 6.5pt; line-height: 1.55; color: #475569;">
+            Summarize the key reasons clients choose your company. What results do you deliver?
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <PrintFooter pageNumber={2} totalPages={2} companyName={companyName} />
+  </div>
+</PageSection>

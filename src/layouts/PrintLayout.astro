@@ -1,0 +1,55 @@
+---
+import "../tailwind.css";
+import "../styles/global.css";
+import { getPaper } from "../data/paper";
+
+interface Props {
+  title?: string;
+}
+
+const { title = "Your Print Site Title" } = Astro.props;
+
+// Single site-wide paper size (env override > src/data/paper.ts token > A4 portrait).
+const paper = getPaper();
+const pageW = `${paper.widthMm}mm`;
+const pageH = `${paper.heightMm}mm`;
+
+// @page needs literal mm values (CSS vars are unreliable there),
+// so inject them directly. Component CSS uses --page-w/--page-h.
+const pageVars = `:root{--page-w:${pageW};--page-h:${pageH};--page-usable-w:${paper.usableWidthMm}mm;--page-usable-h:${paper.usableHeightMm}mm;}@page{size:${pageW} ${pageH};margin:0;}`;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700&family=Fira+Code:wght@400;500&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <style is:global set:html={pageVars} />
+  <style is:global>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background: #FAFAFC; }
+    .print-page {
+      width: var(--page-w);
+      height: var(--page-h);
+      margin: 0 auto;
+      overflow: hidden;
+      position: relative;
+    }
+    @media print {
+      .print-page + .print-page { page-break-before: always; }
+      body { background: white; }
+    }
+  </style>
+</head>
+<body>
+  <slot />
+</body>
+</html>

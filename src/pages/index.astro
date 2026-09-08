@@ -1,0 +1,25 @@
+---
+import PrintLayout from "../layouts/PrintLayout.astro";
+import CoverPage from "../components/CoverPage.astro";
+import IntroductionPage from "../components/IntroductionPage.astro";
+import ColophonPage from "../components/ColophonPage.astro";
+
+const now = new Date();
+const editionLabel = `${String(now.getFullYear()).slice(2)}.${String(now.getMonth() + 1).padStart(2, "0")} Edition`;
+
+// TODO: Customize your print site content here
+const companyName = "Your Company";
+---
+
+<PrintLayout title={companyName}>
+  <CoverPage
+    editionLabel={editionLabel}
+    companyName={companyName}
+    tagline="Your Tagline Here"
+    headline="Your Main Headline"
+    headlineAccent="Accent"
+    description="A brief description of your company or product goes here. Replace this with your own compelling copy."
+  />
+  <IntroductionPage companyName={companyName} />
+  <ColophonPage companyName={companyName} />
+</PrintLayout>

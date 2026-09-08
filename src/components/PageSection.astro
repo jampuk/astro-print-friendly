@@ -1,0 +1,15 @@
+---
+interface Props {
+  noPrint?: boolean;
+}
+
+const { noPrint = false } = Astro.props;
+const sectionClass = noPrint ? "print-page no-print" : "print-page";
+---
+
+<section
+  class={sectionClass}
+  style="background: #FAFAFC; font-family: 'Inter', sans-serif;"
+>
+  <slot />
+</section>

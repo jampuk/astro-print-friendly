@@ -1,0 +1,69 @@
+---
+import PageSection from "../components/PageSection.astro";
+
+interface Props {
+  editionLabel?: string;
+  companyName?: string;
+  tagline?: string;
+  headline?: string;
+  headlineAccent?: string;
+  description?: string;
+}
+
+const {
+  editionLabel = "",
+  companyName = "Your Company",
+  tagline = "Your Tagline Here",
+  headline = "Your Main Headline",
+  headlineAccent = "Accent Text",
+  description = "A brief description of your company or product goes here. Replace this with your own compelling copy.",
+} = Astro.props;
+---
+
+<PageSection>
+  <div class="absolute inset-0 flex flex-col" style="padding: 20mm; z-index: 1;">
+    <!-- Header -->
+    <div class="flex items-center justify-between" style="position: relative; z-index: 2;">
+      <span style="font-family: 'Bricolage Grotesque', 'Space Grotesk', sans-serif; font-weight: 700; font-size: 14pt; color: #0B132B;">
+        {companyName}
+      </span>
+      {editionLabel && (
+        <span style="font-family: 'Fira Code', monospace; font-size: 6pt; color: #64748B; letter-spacing: 0.08em; text-transform: uppercase;">{editionLabel}</span>
+      )}
+    </div>
+
+    <!-- Hero - Pushed Down -->
+    <div class="mt-auto" style="padding-top: 40mm;">
+      <div
+        class="inline-flex items-center rounded-full"
+        style="padding: 2mm 4mm; border: 1px solid #E2E8F0; background: rgba(14, 165, 233, 0.06); gap: 2mm; margin-bottom: 8mm;"
+      >
+        <div class="rounded-full" style="width: 2mm; height: 2mm; background: #0EA5E9;"></div>
+        <span style="font-family: 'Space Grotesk', sans-serif; font-size: 6.5pt; font-weight: 600; color: #475569; letter-spacing: 0.06em; text-transform: uppercase;">{tagline}</span>
+      </div>
+      <h1 style="font-family: 'Bricolage Grotesque', 'Space Grotesk', sans-serif; font-weight: 700; font-size: 40pt; line-height: 1.08; color: #0B132B; letter-spacing: -0.03em; margin: 0 0 6mm 0;">
+        {headline}<br /><span style="color: #0EA5E9;">{headlineAccent}</span>
+      </h1>
+      <p style="font-family: 'Inter', sans-serif; font-size: 10pt; line-height: 1.7; color: #475569; max-width: min(130mm, 85%); margin: 0 0 12mm 0;">
+        {description}
+      </p>
+
+      <!-- Info box -->
+      <div class="rounded-lg overflow-hidden" style="border: 1px solid #E2E8F0; background: #F5F7FA; max-width: min(130mm, 85%);">
+        <div class="flex items-center justify-between" style="padding: 3mm 4mm; border-bottom: 1px solid #E2E8F0;">
+          <div class="flex items-center" style="gap: 1.5mm;">
+            <div class="rounded-full" style="width: 2mm; height: 2mm; background: #EF4444;"></div>
+            <div class="rounded-full" style="width: 2mm; height: 2mm; background: #F59E0B;"></div>
+            <div class="rounded-full" style="width: 2mm; height: 2mm; background: #22C55E;"></div>
+          </div>
+          <span style="font-family: 'Fira Code', monospace; font-size: 5.5pt; color: #64748B; letter-spacing: 0.05em;">YOURWEBSITE.COM</span>
+        </div>
+        <div style="padding: 3.5mm 4mm; font-family: 'Fira Code', monospace; font-size: 6pt; line-height: 1.8;">
+          <div style="color: #334155;"><span style="color: #0284C7;">Feature 1:</span> Replace with your key feature or benefit</div>
+          <div style="color: #334155;"><span style="color: #0284C7;">Feature 2:</span> Replace with another key feature or benefit</div>
+          <div style="color: #334155;"><span style="color: #0284C7;">Feature 3:</span> Replace with a third key feature or benefit</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</PageSection>
